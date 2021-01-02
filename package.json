@@ -1,0 +1,30 @@
+{
+  "name": "mongo-serdes-js",
+  "version": "0.0.1",
+  "description": "Types serializer and deserializer for MongoDB. It can be used in API project in order to deserialize data from requests and serialize it to response.",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile": "rm -rf dist/ && tsc",
+    "compile:windows": "rmdir dist /s /q & tsc",
+    "commit": "cz"
+  },
+  "repository": {
+    "url": "https://github.com/pilerou/mongo-serdes-js"
+  },
+  "keywords": [
+    "mongodb",
+    "serialize",
+    "deserialize",
+    "openapi"
+  ],
+  "author": "Pierre Le Roux <pierre@pastolpat.com",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^3.6.3",
+    "uuid-mongodb": "^2.4.1"
+  },
+  "devDependencies": {
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
