@@ -26,4 +26,3 @@ export const mongoSerDes : SerDesMap = {
 export const mongoSerDesArray : SerDes[] = Object.values(mongoSerDes);
 
 export const mongoSerDesFormats : string[] = mongoSerDesArray.map(a => a.format);
-
