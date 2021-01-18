@@ -75,7 +75,7 @@ components:
 - Your Express OpenAPI configuration with `serDes` setting including `mongoSerDes` formats.
 Formats must be added to `unknownFormats`
 ```javascript
-const {mongoSerDes, mongoSerDesFormats} = require('mongo-serdes-js');
+const {MongoSerDes, MongoSerDesFormats} = require('mongo-serdes-js');
 const OpenApiValidator = require('express-openapi-validator');
 
 app.use(OpenApiValidator.middleware({
@@ -89,12 +89,12 @@ app.use(OpenApiValidator.middleware({
     serDes: [
       OpenApiValidator.baseSerDes.date,
       OpenApiValidator.baseSerDes.dateTime,
-      mongoSerDes.objectid,
-      mongoSerDes.uuid,
+      MongoSerDes.objectid, // this configuration if we want to deserialize objectid in request and serialize it in response
+      MongoSerDes.uuid.serializer, // this configuration if we only want to serialize on response
     ],
-    unknownFormats: mongoSerDesFormats,
+    unknownFormats: MongoSerDesFormats,
     // Or declare only used formats ===> unknownFormats: ['objectid', 'uuid'],
-    // Or ===> unknownFormats: [ mongoSerDes.objectid.format, mongoSerDes.objectid.uuid],
+    // Or ===> unknownFormats: [ MongoSerDes.objectid.format, MongoSerDes.uuid.format],
   }));
 ```
 

@@ -1,9 +1,9 @@
-import { SerDes, SerDesMap } from './types';
+import { SerDes, SerDesTypes, SerDesSingleton } from './types';
 import { ObjectID, Binary } from 'mongodb';
 import * as UUID from 'uuid-mongodb';
 
-export const mongoSerDes : SerDesMap = {
-    objectid : {
+export const MongoSerDes : SerDesTypes = {
+    objectid : new SerDesSingleton({
         format : 'objectid',
         serialize: (d: ObjectID) => {
             return d && d.toString();
@@ -11,8 +11,8 @@ export const mongoSerDes : SerDesMap = {
         deserialize: (s: string) => {
             return new ObjectID(s);
         }
-    },
-    uuid: {
+    }),
+    uuid: new SerDesSingleton({
         format : 'uuid',
         serialize: (b: Binary) => {
             return b && UUID.from(b).toString();
@@ -20,9 +20,9 @@ export const mongoSerDes : SerDesMap = {
         deserialize: (s: string) => {
             return UUID.from(s);
         }
-    }
+    })
 };
 
-export const mongoSerDesArray : SerDes[] = Object.values(mongoSerDes);
+export const MongoSerDesArray : SerDesSingleton[] = Object.values(MongoSerDes);
 
-export const mongoSerDesFormats : string[] = mongoSerDesArray.map(a => a.format);
+export const MongoSerDesFormats : string[] = MongoSerDesArray.map(a => a.format);
