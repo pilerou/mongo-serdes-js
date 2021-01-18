@@ -1,6 +1,6 @@
 {
   "name": "mongo-serdes-js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Types serializer and deserializer for MongoDB. It can be used in API project in order to deserialize data from requests and serialize it to response.",
   "main": "dist/index.js",
   "scripts": {
